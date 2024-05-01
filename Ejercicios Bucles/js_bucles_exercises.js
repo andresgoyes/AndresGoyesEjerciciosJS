@@ -110,3 +110,32 @@ while (num_ej10 !== 0) {
 
 console.log(`La suma de los números pares es: ${acuPar}`);
 console.log(`La suma de los números impares es: ${acuImpar}`);
+
+
+alert("Ejercicio 11");
+
+let num_ej11 = [5, 12, 6, 3, 8, 15, 2, 7, 9, 100, 200];
+
+let max_ej11 = num_ej11[0];
+
+for (let i = 1; i < num_ej11.length; i++) {
+    if (num_ej11[i] > max_ej11) {
+        max_ej11 = num_ej11[i];
+    }
+}
+
+console.log("El numero mas grande es:", max_ej11);
+
+alert("Ejercicio 12");
+
+let num_ej12 = [0, 5, 12, 6, 3, 8, 15, 2, 7, 9, 100, 200, -1];
+
+let min_ej12 = num_ej12[0];
+
+for (let i = 1; i < num_ej12.length; i++) {
+    if (num_ej12[i] < min_ej12) {
+        min_ej12 = num_ej12[i];
+    }
+}
+
+console.log("El numero mas chico es:", min_ej12);
