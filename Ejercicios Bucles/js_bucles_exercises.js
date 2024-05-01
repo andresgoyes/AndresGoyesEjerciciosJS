@@ -104,7 +104,7 @@ while (num_ej10 !== 0) {
         acuPar += num_ej10;
     } else {
         acuImpar += num_ej10;
-    }    
+    }
     num_ej10 = parseInt(prompt("Ingrese otro numero para ir sumando, escriba 0 para terminar:"));
 }
 
@@ -139,3 +139,28 @@ for (let i = 1; i < num_ej12.length; i++) {
 }
 
 console.log("El numero mas chico es:", min_ej12);
+
+alert("Ejercicio 14");
+
+for (let i = 1; i <= 5; i++) {
+    let fila_ej14 = '';
+
+    for (let j = 1; j <= i; j++) {
+        fila_ej14 += '*';
+    }
+
+    console.log(fila_ej14);
+}
+
+alert("Ejercicio 15");
+
+for (let i = 5; i >= 1; i--) {
+    let fila_ej15 = '';
+  
+    for (let j = 1; j <= i; j++) {
+        fila_ej15 += '*';
+    }
+
+    console.log(fila_ej15);
+}
+
