@@ -78,7 +78,7 @@ let familia_ej8 = [
 ];
 
 for (let i = 0; i < familia_ej8.length; i++) {
-    console.log(`Hola, soy ${familia_ej8[i].nombre}, tengo ${familia_ej8[i].edad} años, soy el/la ${familia_ej8[i].relacion} y me gusta ${familia_ej8[i].hobby}`);
+    console.log(`Hola, soy ${familia_ej8[i].nombre}, tengo ${familia_ej8[i].edad} años, soy ${familia_ej8[i].relacion} y me gusta ${familia_ej8[i].hobby}`);
 }
 
 alert("Ejercicio 9");
@@ -108,8 +108,8 @@ while (num_ej10 !== 0) {
     num_ej10 = parseInt(prompt("Ingrese otro numero para ir sumando, escriba 0 para terminar:"));
 }
 
-console.log(`La suma de los números pares es: ${acuPar}`);
-console.log(`La suma de los números impares es: ${acuImpar}`);
+console.log(`La suma de los numeros pares es: ${acuPar}`);
+console.log(`La suma de los numeros impares es: ${acuImpar}`);
 
 
 alert("Ejercicio 11");
