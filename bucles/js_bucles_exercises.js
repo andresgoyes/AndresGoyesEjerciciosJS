@@ -156,7 +156,7 @@ for (let i = 1; i < num_ej12.length; i++) {
     }
 }
 
-console.log("El numero mas chico es:", min_ej12);
+console.log("El numero mas chico es: ", min_ej12);
 
 alert("Ejercicio 14");
 
