@@ -51,7 +51,7 @@ while (div_ej4 <= num_ej4) {
     div_ej4++;
 }
 
-if (cont_ej4 === 2) {
+if (cont_ej4 == 2) {
     alert("El numero " + num_ej4 + " es primo:");
 } else {
     alert("El numero " + num_ej4 + " no es primo:");
@@ -129,7 +129,6 @@ while (num_ej10 !== 0) {
 console.log(`La suma de los numeros pares es: ${acuPar}`);
 console.log(`La suma de los numeros impares es: ${acuImpar}`);
 
-
 alert("Ejercicio 11");
 
 let num_ej11 = [5, 12, 6, 3, 8, 15, 2, 7, 9, 100, 200];
@@ -158,6 +157,36 @@ for (let i = 1; i < num_ej12.length; i++) {
 
 console.log("El numero mas chico es: ", min_ej12);
 
+alert("Ejercicio 13");
+
+let jugador1_ej13 = prompt("Ingresa el nombre del jugador 1:");
+let jugador2_ej13 = prompt("Ingresa el nombre del jugador 2:");
+let ganador_ej13 = false;
+
+while (!ganador_ej13) {
+    let selJugador1_ej13 = prompt(jugador1_ej13 + ", elige: piedra, papel o tijeras");
+    let selJugador2_ej13 = prompt(jugador2_ej13 + ", elige: piedra, papel o tijeras");
+
+    if (selJugador1_ej13 == selJugador2_ej13) {
+        alert("Empate, ambos eligieron " + selJugador1_ej13 + ". ¡Vamos de nuevo!");
+    } else {
+
+        if ((selJugador1_ej13 == "piedra" && selJugador2_ej13 == "tijeras") ||
+            (selJugador1_ej13 == "papel" && selJugador2_ej13 == "piedra") ||
+            (selJugador1_ej13 == "tijeras" && selJugador2_ej13 == "papel")) {
+            alert("¡" + jugador1_ej13 + " gana!");
+        } else
+            if ((selJugador2_ej13 == "piedra" && selJugador1_ej13 == "tijeras") ||
+                (selJugador2_ej13 == "papel" && selJugador1_ej13 == "piedra") ||
+                (selJugador2_ej13 == "tijeras" && selJugador1_ej13 == "papel")) {
+                alert("¡" + jugador2_ej13 + " gana!");
+            } else {
+                alert("¡Juego finalizado, deben elegir una opcion valida!");
+            }
+        ganador_ej13 = true;
+    }
+}
+
 alert("Ejercicio 14");
 
 for (let i = 1; i <= 5; i++) {
@@ -174,10 +203,26 @@ alert("Ejercicio 15");
 
 for (let i = 5; i >= 1; i--) {
     let fila_ej15 = '';
-  
+
     for (let j = 1; j <= i; j++) {
         fila_ej15 += '*';
     }
 
     console.log(fila_ej15);
 }
+
+alert("Ejercicio 16");
+
+let arr_ej16 = [15, 31, 9, 11, 28, 52, 17, 4, 68, 70];
+
+for (let i = 0; i < arr_ej16.length - 1; i++) {
+    for (let j = 0; j < arr_ej16.length - 1 - i; j++) {
+        if (arr_ej16[j] > arr_ej16[j + 1]) {
+            let temp_ej16 = arr_ej16[j];
+            arr_ej16[j] = arr_ej16[j + 1];
+            arr_ej16[j + 1] = temp_ej16;
+        }
+    }
+}
+
+console.log("Array ordenado:", arr_ej16);
