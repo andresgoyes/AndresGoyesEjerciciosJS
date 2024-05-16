@@ -24,6 +24,16 @@ let textoTextarea = document.getElementById('texto-textarea');
 
 pintarNotas(notas, contenedorNotas);
 
+function asignarEventListeners() {
+    filtroTexto.addEventListener('input', aplicarFiltros);
+    filtroRealizadas.addEventListener('change', aplicarFiltros);
+    guardarNota.addEventListener('click', agregarNota);
+    limpiarCampos.addEventListener('click', () => {
+        tituloInput.value = '';
+        textoTextarea.value = '';
+    });
+}
+
 function pintarNotas(arregloAPintar, divPadre) {
     divPadre.innerHTML = '';
 
@@ -35,6 +45,7 @@ function pintarNotas(arregloAPintar, divPadre) {
     for (let i = 0; i < arregloAPintar.length; i++) {
         crearNota(divPadre, arregloAPintar[i]);
     }
+    
 }
 
 function crearNota(divPadre, nota) {
@@ -118,12 +129,9 @@ function aplicarFiltros() {
     pintarNotas(notasFiltradas, contenedorNotas);
 }
 
-filtroTexto.addEventListener('input', aplicarFiltros);
-filtroRealizadas.addEventListener('change', aplicarFiltros);
-guardarNota.addEventListener('click', agregarNota);
-limpiarCampos.addEventListener('click', () => {
-    tituloInput.value = '';
-    textoTextarea.value = '';
-});
+function iniciarAplicacion() {
+    pintarNotas(notas, contenedorNotas);
+    asignarEventListeners();
+}
 
-pintarNotas(notas, contenedorNotas);
+iniciarAplicacion();
