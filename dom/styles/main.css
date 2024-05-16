@@ -25,28 +25,6 @@ main {
 
 }
 
-footer {
-    height: 5vh;
-    width: 100%;
-    background-color: #212529;
-    color: whitesmoke;
-
-    .img-fluid {
-        height: 4.5vh;
-        width: 4.5vh;
-    }
-
-    a {
-        color: whitesmoke;
-        text-decoration: none;
-        transition: ease .1s;
-
-        &:hover {
-            filter: drop-shadow(0 0 10px #D90368);
-        }
-    }
-}
-
 .container {
     width: 80vw;
     height: 84.6vh;
@@ -59,14 +37,12 @@ footer {
 
 .input-section {
     display: flex;
-    justify-content: space-between;
-    /* Alinea los elementos a los extremos */
+    justify-content: space-between;    
 }
 
 .container-left {
     width: 70%;
     padding-right: 10px;
-    /* Agrega un espacio entre el contenedor izquierdo y el derecho */
 }
 
 .container-right {
@@ -221,4 +197,26 @@ button:hover {
     text-align: center;
     color: #777;
     margin-top: 20px;
+}
+
+footer {
+    height: 5vh;
+    width: 100%;
+    background-color: #212529;
+    color: whitesmoke;
+
+    .img-fluid {
+        height: 4.5vh;
+        width: 4.5vh;
+    }
+
+    a {
+        color: whitesmoke;
+        text-decoration: none;
+        transition: ease .1s;
+
+        &:hover {
+            filter: drop-shadow(0 0 10px #D90368);
+        }
+    }
 }
