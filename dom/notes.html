@@ -34,32 +34,28 @@
             </div>
         </nav>
     </header>
-    <main class="d-flex flex-column flex-lg-row">
-        <div class="container">
-            <div class="row">
-                <h1 class="mt-5">Aplicación de Notas</h1>
-                <div class="input-section">
-                    <div class="container-left">
-                        <input type="text" id="titulo-input" placeholder="Título">
-                        <textarea id="texto-textarea" placeholder="Texto"></textarea>
-                    </div>
-                    <div class="container-right">
-                        <button id="guardar-nota">Guardar nota</button>
-                        <button id="limpiar-campos">Limpiar campos</button>
-                    </div>
+    <main class="container">
+        <div class="container-fluid w-75">
+            <h2 class="text-center">Aplicación de Notas</h2>
+            <div class="d-flex justify-content-around">
+                <div class="col-md-8">
+                    <input type="text" id="titulo-input" class="form-control mb-2" placeholder="Título">
+                    <textarea id="texto-textarea" class="form-control" rows="5" placeholder="Texto"></textarea>
                 </div>
-                <div class="filters">
-                    <input type="text" id="filtro-texto" placeholder="Filtrar por texto">
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="filtro-realizadas">
-                        <span class="slider"></span>
-                    </label>
-                    <span>Mostrar solo realizadas</span>
+                <div class="col-md-4 d-flex flex-column">
+                    <button id="guardar-nota" class="btn btn-success mb-2">Guardar nota</button>
+                    <button id="limpiar-campos" class="btn btn-danger">Limpiar campos</button>
                 </div>
-                <div id="contenedor-notas">
+            </div>
+            <div class="d-flex align-items-center my-3">
+                <input type="text" id="filtro-texto" class="form-control me-2" placeholder="Filtrar por texto">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="filtro-realizadas">
+                    <label class="form-check-label" for="filtro-realizadas">Mostrar solo realizadas</label>
                 </div>
-            </div>            
+            </div>
         </div>
+        <div class="d-flex align-items-center my-3" id="contenedor-notas"></div>
     </main>
     <footer class="d-flex justify-content-between align-items-center px-2">
         <div class="d-flex">

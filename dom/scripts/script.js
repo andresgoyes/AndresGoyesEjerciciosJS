@@ -2,45 +2,59 @@ let idGlobal = 2;
 let notas = [
     {
         id: 1,
-        titulo: 'sacar basura',
-        texto: 'mi mama me regaña sino lo hago',
+        titulo: 'Sacar basura',
+        texto: 'Mi mamá me regaña si no lo hago',
         realizada: false
     },
     {
         id: 2,
-        titulo: 'organizar casa',
-        texto: 'mi esposa me regaña sino lo hago',
+        titulo: 'Organizar casa',
+        texto: 'Mi esposa me regaña si no lo hago',
         realizada: false
     }
 ];
 
-function pintarNotas(notas) {
-    let contenedor = document.getElementById('contenedor-notas');
-    contenedor.innerHTML = '';
+let contenedorNotas = document.getElementById('contenedor-notas');
+let filtroTexto = document.getElementById('filtro-texto');
+let filtroRealizadas = document.getElementById('filtro-realizadas');
+let guardarNota = document.getElementById('guardar-nota');
+let limpiarCampos = document.getElementById('limpiar-campos');
+let tituloInput = document.getElementById('titulo-input');
+let textoTextarea = document.getElementById('texto-textarea');
 
-    if (notas.length === 0) {
-        contenedor.innerHTML = '<p class="empty-message">NO HAY NOTAS PARA MOSTRAR</p>';
+pintarNotas(notas, contenedorNotas);
+
+function pintarNotas(arregloAPintar, divPadre) {
+    divPadre.innerHTML = '';
+
+    if (arregloAPintar.length === 0) {
+        divPadre.innerHTML = '<p class="empty-message">NO HAY NOTAS PARA MOSTRAR</p>';
         return;
     }
 
-    notas.forEach(nota => {
-        const tachado = nota.realizada ? 'line-through' : 'none';
-        contenedor.innerHTML += `
-            <div class="note">
-                <div class="note-header">
-                    <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
-                    <h3>${nota.titulo}</h3>
-                </div>
-                <p class="texto" style="text-decoration: ${tachado}">${nota.texto}</p>
-                <button onClick="borrarNota(${nota.id})">Borrar nota</button>
-            </div>
-        `;
-    });
+    for (let i = 0; i < arregloAPintar.length; i++) {
+        crearNota(divPadre, arregloAPintar[i]);
+    }
+}
+
+function crearNota(divPadre, nota) {
+    let nuevaNota = document.createElement('div');
+    nuevaNota.classList.add('note');
+
+    const tachado = nota.realizada ? 'line-through' : 'none';
+    nuevaNota.innerHTML = `
+        <div class="note-header">
+            <input type="checkbox" onClick="marcarRealizada(${nota.id})" ${nota.realizada ? "checked" : ""}>
+            <h3>${nota.titulo}</h3>
+        </div>
+        <p class="texto" style="text-decoration: ${tachado}">${nota.texto}</p>
+        <button class="boton" onClick="borrarNota(${nota.id})">Borrar nota</button>
+    `;
+
+    divPadre.appendChild(nuevaNota);
 }
 
 function agregarNota() {
-    const tituloInput = document.getElementById('titulo-input');
-    const textoTextarea = document.getElementById('texto-textarea');
     const titulo = tituloInput.value;
     const texto = textoTextarea.value;
 
@@ -53,7 +67,7 @@ function agregarNota() {
         };
 
         notas.push(nuevaNota);
-        pintarNotas(notas);
+        pintarNotas(notas, contenedorNotas);
 
         tituloInput.value = '';
         textoTextarea.value = '';
@@ -64,53 +78,52 @@ function agregarNota() {
 
 function borrarNota(id) {
     notas = notas.filter(nota => nota.id !== id);
-    pintarNotas(notas);
+    pintarNotas(notas, contenedorNotas);
 }
 
 function marcarRealizada(id) {
     let nota = notas.find(nota => nota.id === id);
     nota.realizada = !nota.realizada;
-    pintarNotas(notas);
+    pintarNotas(notas, contenedorNotas);
 }
 
-function filtrarPorRealizadas(notas) {
-    return notas.filter(nota => nota.realizada);
-}
-
-function filtrarPorTexto(notas, texto) {
+function filtrarPorTexto(arreglo, texto) {
     if (!texto) {
-        return notas;
+        return arreglo;
     }
 
     let textoLowerCase = texto.toLowerCase();
-    return notas.filter(nota =>
+    return arreglo.filter(nota =>
         nota.titulo.toLowerCase().includes(textoLowerCase) ||
         nota.texto.toLowerCase().includes(textoLowerCase)
     );
 }
 
+function filtrarPorRealizadas(arreglo) {
+    return arreglo.filter(nota => nota.realizada);
+}
+
 function aplicarFiltros() {
-    let filtroTexto = document.getElementById('filtro-texto').value;
-    let filtroRealizadas = document.getElementById('filtro-realizadas').checked;
+    let texto = filtroTexto.value;
+    let realizadas = filtroRealizadas.checked;
 
     let notasFiltradas = notas;
 
-    notasFiltradas = filtrarPorTexto(notasFiltradas, filtroTexto);
+    notasFiltradas = filtrarPorTexto(notasFiltradas, texto);
 
-    if (filtroRealizadas) {
+    if (realizadas) {
         notasFiltradas = filtrarPorRealizadas(notasFiltradas);
     }
 
-    pintarNotas(notasFiltradas);
+    pintarNotas(notasFiltradas, contenedorNotas);
 }
 
-document.getElementById('filtro-texto').addEventListener('input', aplicarFiltros);
-document.getElementById('filtro-realizadas').addEventListener('change', aplicarFiltros);
-
-document.getElementById('guardar-nota').addEventListener('click', agregarNota);
-document.getElementById('limpiar-campos').addEventListener('click', () => {
-    document.getElementById('titulo-input').value = '';
-    document.getElementById('texto-textarea').value = '';
+filtroTexto.addEventListener('input', aplicarFiltros);
+filtroRealizadas.addEventListener('change', aplicarFiltros);
+guardarNota.addEventListener('click', agregarNota);
+limpiarCampos.addEventListener('click', () => {
+    tituloInput.value = '';
+    textoTextarea.value = '';
 });
 
-pintarNotas(notas);
+pintarNotas(notas, contenedorNotas);

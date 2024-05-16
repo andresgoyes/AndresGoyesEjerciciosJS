@@ -7,7 +7,7 @@ header {
 body {
     width: 100%;
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: whitesmoke;    
 }
 
 main {
@@ -23,21 +23,26 @@ main {
         align-content: center;        
     }
 
+    
 }
 
-.container {
-    width: 80vw;
-    height: 84.6vh;
-    margin: 20px auto;
-    padding: 0 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.navbar-toggler {
+    margin-right: 0;
+}
+
+.div-imc{
+    background-color: white;    
 }
 
 .input-section {
     display: flex;
     justify-content: space-between;    
+}
+
+.container{
+    background-color: white;
+    margin-top: 2vh;
+    border-radius: 10px;
 }
 
 .container-left {
@@ -54,18 +59,14 @@ main {
 }
 
 #contenedor-notas {
+    min-height: 54.4vh;
+    height: 100%;
     width: 100%;
     padding: 20px;    
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;  
     flex-wrap: wrap;    
-}
-
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
 }
 
 .filters {
@@ -143,7 +144,8 @@ textarea {
 }
 
 button {
-    padding: 8px 16px;
+    width: auto;
+    padding: 3px;    
     border: none;
     background-color: #4caf50;
     color: #fff;
@@ -186,6 +188,7 @@ button:hover {
 }
 
 .note button {
+    width: auto;
     background-color: red;
 }
 
